@@ -48,12 +48,12 @@ export default class ListItem extends Component{
         return (
             
             
-                <Animated.View style={{opacity: this.opacity, transform: [{scale: this.scale}]}} >
-                
+            <Animated.View style={{opacity: this.opacity, transform: [{scale: this.scale}]}} >
                 <TouchableOpacity 
                     activeOpacity={0.9} 
-                    onPress={this.listItemPressHandler} >
-                    <Card>
+                    onPress={this.listItemPressHandler} 
+                    >
+                    <Card cardStyle={{paddingTop: 50}}>
                         <View>
                             {/* upper row */}
                             <View style={styles.itemUpperRow}>

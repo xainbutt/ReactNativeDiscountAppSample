@@ -11,7 +11,8 @@ export default class Card extends Component{
 
     render = () => {
         return (
-            <View style={styles.container} >
+            <View 
+                style={[styles.container, {height: this.props.height ? this.props.height : 150}, this.props.cardStyle ]} >
                 {this.props.children}
             </View>
         );
@@ -31,7 +32,5 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
-        paddingTop: 50,
-        height: 150
     },
 })

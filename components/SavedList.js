@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Animated, Image, ScrollView, FlatList} from 'react-native';
 import ListItem from './ListItem';
+import Card from './Card';
 
 
 data = [
@@ -14,7 +15,7 @@ export default class SavedList extends Component {
   render() {
     return (
       <View style={styles.container}>
-           <FlatList
+           {/* <FlatList
 
                     data={data}
                     renderItem={({item, index}) => (
@@ -22,7 +23,11 @@ export default class SavedList extends Component {
                     )}
                     keyExtractor={i => i}
 
-                />
+                /> */}
+
+            <Card height={100} >
+              <Text>Hello text in card</Text>
+            </Card>
        </View>
       
       
