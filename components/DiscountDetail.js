@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ScrollView, Animated} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Animated} from 'react-native';
 
 import Header from './Header';
 import ListItem from './ListItem';
@@ -8,7 +8,8 @@ import Card from './Card';
 export default class DiscountDetail extends Component {
   constructor(props){
     super(props);
-    this.cardPositionY = new Animated.Value(120)
+    this.headerCardPositionY = new Animated.Value(120)
+    this.detailCardPositionY = new Animated.Value(420)
   }
 
     static navigationOptions = ({ navigation }) => ({
@@ -16,29 +17,45 @@ export default class DiscountDetail extends Component {
     });
 
     componentWillMount = () => {
-        Animated.timing(this.cardPositionY,{
-            duration: 800,
-            toValue: -90,
-        }).start();
+        Animated.parallel([
+            Animated.timing(this.headerCardPositionY,{
+                duration: 800,
+                toValue: -90,
+            }),
+
+            Animated.timing(this.detailCardPositionY,{
+                duration: 800,
+                toValue: -50,
+            })
+        ]).start();
+        
     }
 
     render() {
         return (
                 <ScrollView style={styles.container}>
                     <Header onBackButtonPress={ this.props.navigation.goBack } navKey={this.props.navigation.state.key} />
-                    <Animated.View style={[styles.listItem, {transform: [{translateY: this.cardPositionY}]}]} >
+                    <Animated.View style={[styles.listItem, {transform: [{translateY: this.headerCardPositionY}]}]} >
                         <ListItem 
                             clickable={false}
-                            title={' My Title '}
+                            title={'My Title'}
                         />
                     </Animated.View>
 
-                    <Card height={250} cardStyle={{borderTopColor: 'black', borderTopWidth: 2, marginTop: -70}}>
-                        <Text>
-                            Some text
-                        </Text>
-
-                    </Card>
+                    <Animated.View style={{justifyContent: 'space-between', flex: 1, paddingTop: 150, transform: [{translateY: this.detailCardPositionY}]}}>
+                        <Card cardStyle={{marginTop: -150, }}>
+                            <Text style={{fontSize: 16, padding: 20, lineHeight: 25}}>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                It has survived not only five centuries, but also the leap into electronic typesetting, 
+                                remaining essentially unchanged. It was popularised in the 1960s with the release of 
+                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                                software like Aldus PageMaker including versions of Lorem Ipsu
+                            </Text>
+                        </Card>
+                    </Animated.View>
+                    
 
                 </ScrollView>
             

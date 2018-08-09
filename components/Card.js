@@ -12,7 +12,7 @@ export default class Card extends Component{
     render = () => {
         return (
             <View 
-                style={[styles.container, {height: this.props.height ? this.props.height : 150}, this.props.cardStyle ]} >
+                style={[styles.container, {minHeight: this.props.minHeight ? this.props.minHeight : 150}, this.props.cardStyle ]} >
                 {this.props.children}
             </View>
         );

@@ -3,34 +3,33 @@ import {createStackNavigator} from 'react-navigation';
 import DiscountDetail from '../components/DiscountDetail';
 import DiscountList from '../components/DiscountList';
 import {Animated, Easing} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default DiscountNavigator = createStackNavigator(
     {
       "Discount Deals": {
-          screen : DiscountList,
-          navigationOptions:{
-                headerTitle: 'Discount Deals',
-                headerBackTitle: 'back'
-            }
-        } ,
+        screen : DiscountList,
+        navigationOptions:{
+              headerTitle: 'Discount Deals',
+              headerBackTitle: 'back'
+          }
+      } ,
       "Deal Detail": {
-          screen: DiscountDetail,
-          navigationOptions:{
-             
-                 
-            
+        screen: DiscountDetail,
+        navigationOptions:{            
         }
-    } ,
+      } ,
     },
     {
       navigationOptions: ({ navigation }) => ({
         mode: 'card',
-        headerMode: 'float'
+        headerMode: 'float',
+        header: null
       }),
       transitionConfig: () => ({
         transitionSpec: {
-          duration: 600,
+          duration: 1000,
           easing: Easing.out(Easing.poly(4)),
           timing: Animated.timing,
         },
@@ -40,17 +39,17 @@ export default DiscountNavigator = createStackNavigator(
   
         //   const height = layout.initHeight;
           
-        //   const translateY = position.interpolate({
-        //     inputRange: [index - 1, index, index + 1],
-        //     outputRange: [height, 0, 0],
-        //   });
-  
+          // const scale = position.interpolate({
+          //   inputRange: [0, 1],
+          //   outputRange: [0, 1],
+          // });
+          // console.warn(position)
           const opacity = position.interpolate({
             inputRange: [index - 1, index - 0.99, index],
             outputRange: [0, 0.4, 1],
           });
   
-        //   return { opacity, transform: [{ translateY }] };
+          // return { opacity, transform: [{ scale }] };
         return { opacity };
         },
       }),

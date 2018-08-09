@@ -24,13 +24,22 @@ export default class Header extends Component{
 
     }
 
+    backButtonPressHandler = () => {
+        Animated.timing(this.positionY,{
+            duration: 400,
+            toValue: -140
+        }).start();
+
+        this.props.onBackButtonPress(this.props.navKey)
+    }
+
     render = () => {
         return (
             <Animated.View
                 style={[styles.container, {transform: [{translateY: this.positionY}]}]}
 
             >
-                <TouchableOpacity style={styles.backBtn} onPress={() => this.props.onBackButtonPress(this.props.navKey)} >
+                <TouchableOpacity style={styles.backBtn} onPress={this.backButtonPressHandler } >
                     <Text style={styles.backBtnText} >
                         Back
                     </Text>
@@ -40,6 +49,9 @@ export default class Header extends Component{
                 </TouchableOpacity>
             </Animated.View>
         );
+    }
+
+    componentWillUnmount = () => {
     }
 }
 

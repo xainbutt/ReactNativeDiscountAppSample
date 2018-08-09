@@ -31,7 +31,7 @@ export default class ListItem extends Component{
             }),
             Animated.timing(this.opacity, {
                 toValue: 1,
-                duration: 1000
+                duration: 700
             })
         ]).start();
     }
@@ -53,7 +53,7 @@ export default class ListItem extends Component{
                     activeOpacity={0.9} 
                     onPress={this.listItemPressHandler} 
                     >
-                    <Card cardStyle={{paddingTop: 50}}>
+                    <Card cardStyle={{paddingTop: 20}}>
                         <View>
                             {/* upper row */}
                             <View style={styles.itemUpperRow}>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     },
     itemUpperRow: {
         flex: 1,
-        marginBottom: 40
+        marginBottom: 25
     },
     itemImage: {
         width: 60, 
