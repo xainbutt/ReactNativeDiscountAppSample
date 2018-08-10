@@ -1,4 +1,4 @@
-
+import React from 'react';
 import {createStackNavigator} from 'react-navigation';
 import DiscountDetail from '../components/DiscountDetail';
 import DiscountList from '../components/DiscountList';
@@ -29,13 +29,13 @@ export default DiscountNavigator = createStackNavigator(
       }),
       transitionConfig: () => ({
         transitionSpec: {
-          duration: 1000,
+          duration: 700,
           easing: Easing.out(Easing.poly(4)),
           timing: Animated.timing,
         },
-        screenInterpolator: sceneProps => {
-          const { layout, position, scene } = sceneProps;
-          const { index } = scene;
+        // screenInterpolator: sceneProps => {
+        //   const { layout, position, scene } = sceneProps;
+        //   const { index } = scene;
   
         //   const height = layout.initHeight;
           
@@ -44,14 +44,14 @@ export default DiscountNavigator = createStackNavigator(
           //   outputRange: [0, 1],
           // });
           // console.warn(position)
-          const opacity = position.interpolate({
-            inputRange: [index - 1, index - 0.99, index],
-            outputRange: [0, 0.4, 1],
-          });
+        //   const opacity = position.interpolate({
+        //     inputRange: [index - 1, index - 0.99, index],
+        //     outputRange: [0, 0.4, 1],
+        //   });
   
-          // return { opacity, transform: [{ scale }] };
-        return { opacity };
-        },
+        //   // return { opacity, transform: [{ scale }] };
+        // return { opacity };
+        // },
       }),
     
       

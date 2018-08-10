@@ -12,9 +12,22 @@ export default class DiscountList extends Component {
     super(props);
   }
 
-  // static navigationOptions = ({ navigation }) => ({
-  //   header: null
-  // });
+  static navigationOptions = ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      // console.warn(routeName);
+      if (routeName === 'Discount Deals') {
+        iconName = 'rocket';
+      } else if (routeName === 'Profile') {
+        iconName = `ios-contact${focused ? '' : '-outline'}`;
+      }
+
+      // You can return any component that you like here! We usually use an
+      // icon component from react-native-vector-icons
+      return <Icon.Button size={25} name="heart-o" backgroundColor='transparent' color="red" />;
+    }
+  });
 
   handleItemPress = (item) => {
     this.props.navigation.navigate('Deal Detail', {item: item});

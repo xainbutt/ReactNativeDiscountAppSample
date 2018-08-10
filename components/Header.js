@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Animated, TouchableOpacity, StyleSheet} from 'react-native';
 import Color from '../helpers/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class Header extends Component{
@@ -41,11 +42,8 @@ export default class Header extends Component{
             >
                 <TouchableOpacity style={styles.backBtn} onPress={this.backButtonPressHandler } >
                     <Text style={styles.backBtnText} >
-                        Back
+                        <Icon size={15} name='chevron-left' color='#fff' /> Back
                     </Text>
-                    <View>
-                        {this.props.children ? this.props.children : null}
-                    </View>
                 </TouchableOpacity>
             </Animated.View>
         );
@@ -62,10 +60,11 @@ const styles = StyleSheet.create({
         backgroundColor: Color.blue,
     },
     backBtn: {        
-        width: 50,
-        height: 30,        
+        width: 80,
+        height: 50,        
         marginTop: 20,
-        marginLeft: 10
+        marginLeft: 20,
+        flex: 1
     },
     backBtnText: {
         fontSize: 18,

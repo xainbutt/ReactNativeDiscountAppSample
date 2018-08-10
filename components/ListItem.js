@@ -67,8 +67,8 @@ export default class ListItem extends Component{
                                         {this.state.title}
                                     </Text>
 
-                                    <View style={{marginTop: -30, marginLeft: 20, alignContent: 'flex-end', flex: 1}} >
-                                        <Icon name="heart-o" size={25} color="red" backgroundColor="#FFF" /> 
+                                    <View style={{marginTop: -30, marginLeft: 0, alignContent: 'flex-end', flex: 1}} >
+                                      <Icon.Button size={25} name="heart-o" backgroundColor='transparent' color="red" />
                                     </View>
                                     
                                 </View>
