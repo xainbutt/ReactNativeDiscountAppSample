@@ -17,9 +17,10 @@ export default class ListItem extends Component{
         super(props);
         this.state = {
             title: this.props.title,
+            saveIcon: 'heart-o'
         }
         this.opacity = new Animated.Value(0);
-        this.scale = new Animated.Value(0)
+        this.scale = new Animated.Value(0);
     }
 
     componentWillMount = () => {
@@ -39,6 +40,16 @@ export default class ListItem extends Component{
     listItemPressHandler = () => {
         if (this.props.clickable){
             this.props.onPress();
+        }      
+    }
+
+    onSaveListItemHandler = () => {
+        if (this.props.onItemSaved){
+            this.setState({
+                saveIcon: 'heart'
+            });
+            
+            this.props.onItemSaved();
         }
         
     }
@@ -67,8 +78,8 @@ export default class ListItem extends Component{
                                         {this.state.title}
                                     </Text>
 
-                                    <View style={{marginTop: -30, marginLeft: 0, alignContent: 'flex-end', flex: 1}} >
-                                      <Icon.Button size={25} name="heart-o" backgroundColor='transparent' color="red" />
+                                    <View style={{marginTop: -30, marginLeft: 0, alignContent: 'flex-end', flex: 1, opacity: this.iconOpacity}} >
+                                      <Icon.Button size={25} name={this.state.saveIcon} backgroundColor='transparent' color={'red'} onPress={this.onSaveListItemHandler} />
                                     </View>
                                     
                                 </View>

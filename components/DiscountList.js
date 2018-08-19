@@ -33,6 +33,10 @@ export default class DiscountList extends Component {
     this.props.navigation.navigate('Deal Detail', {item: item});
   }
 
+  saveListItem = () => {
+    
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -63,6 +67,7 @@ export default class DiscountList extends Component {
                     <ListItem 
                       clickable={true}
                       title={item}
+                      onItemSaved={this.saveListItem}
                       onPress={() => this.handleItemPress(item) }
                     />
                     

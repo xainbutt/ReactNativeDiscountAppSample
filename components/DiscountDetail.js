@@ -39,6 +39,7 @@ export default class DiscountDetail extends Component {
                         <ListItem 
                             clickable={false}
                             title={'My Title'}
+                            onItemSaved={this.saveListItem}
                         />
                     </Animated.View>
 
