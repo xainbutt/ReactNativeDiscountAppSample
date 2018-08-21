@@ -3,7 +3,6 @@ import {createBottomTabNavigator} from 'react-navigation';
 import SavedList from '../components/SavedList';
 import DiscountNavigator from './DetailStackNavigator';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Color from '../helpers/colors';
 
 export default HomeTabNavigator = createBottomTabNavigator(
     {

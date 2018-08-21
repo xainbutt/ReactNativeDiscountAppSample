@@ -15,10 +15,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export default class ListItem extends Component{
     constructor(props){
         super(props);
+
         this.state = {
             title: this.props.title,
-            saveIcon: 'heart-o'
+            saveIcon: this.props.icon,
+            imageSource: this.props.imageSource
         }
+
         this.opacity = new Animated.Value(0);
         this.scale = new Animated.Value(0);
     }
@@ -43,13 +46,13 @@ export default class ListItem extends Component{
         }      
     }
 
-    onSaveListItemHandler = () => {
-        if (this.props.onItemSaved){
+    iconPressHandler = () => {
+        if (this.props.onIconPressed){
             this.setState({
-                saveIcon: 'heart'
+                saveIcon: this.state.saveIcon === this.props.icon ? this.props.iconPressed : this.props.icon
             });
             
-            this.props.onItemSaved();
+            this.props.onIconPressed();
         }
         
     }
@@ -70,7 +73,7 @@ export default class ListItem extends Component{
                             <View style={styles.itemUpperRow}>
                                 <View style={{ justifyConent: 'space-between', alignItems: 'center', flex: 1, flexDirection: 'row' }}>
                             
-                                    <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
+                                    <Image source={this.props.imageSource || {uri: 'https://via.placeholder.com/150/92c952'}}
                                     style={styles.itemImage}
                                     />
                                 
@@ -78,9 +81,15 @@ export default class ListItem extends Component{
                                         {this.state.title}
                                     </Text>
 
-                                    <View style={{marginTop: -30, marginLeft: 0, alignContent: 'flex-end', flex: 1, opacity: this.iconOpacity}} >
-                                      <Icon.Button size={25} name={this.state.saveIcon} backgroundColor='transparent' color={'red'} onPress={this.onSaveListItemHandler} />
-                                    </View>
+
+                                    {
+                                        this.props.showIcon && 
+                                            <View style={{marginTop: -30, marginLeft: 0, alignContent: 'flex-end', flex: 1}} >
+                                                <Icon.Button size={25} name={this.state.saveIcon} backgroundColor='transparent' color={this.props.iconColor} onPress={this.iconPressHandler} />
+                                            </View>
+
+                                    }
+                                    
                                     
                                 </View>
                     

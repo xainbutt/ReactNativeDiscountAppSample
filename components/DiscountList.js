@@ -5,29 +5,14 @@ import Color from '../helpers/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 data = [
-  'Title1 is long', 'Title2 is long', 'Title3', 'Title4', 'Title5'
+  'Title', 'Title', 'Title3', 'Title4', 'Title5'
 ]
 export default class DiscountList extends Component {
   constructor(props){
     super(props);
   }
 
-  static navigationOptions = ({ navigation }) => ({
-    tabBarIcon: ({ focused, tintColor }) => {
-      const { routeName } = navigation.state;
-      let iconName;
-      // console.warn(routeName);
-      if (routeName === 'Discount Deals') {
-        iconName = 'rocket';
-      } else if (routeName === 'Profile') {
-        iconName = `ios-contact${focused ? '' : '-outline'}`;
-      }
-
-      // You can return any component that you like here! We usually use an
-      // icon component from react-native-vector-icons
-      return <Icon.Button size={25} name="heart-o" backgroundColor='transparent' color="red" />;
-    }
-  });
+  
 
   handleItemPress = (item) => {
     this.props.navigation.navigate('Deal Detail', {item: item});
@@ -50,24 +35,33 @@ export default class DiscountList extends Component {
             shadowRadius: 4, 
 
             }}>
-          <View>
-            <Text style={{fontSize: 25, fontWeight: 'bold', color: '#333'}}>
-              Discount Offers
-            </Text>
-          </View>
-          <View>
-            <Icon.Button size={25} name="facebook-square" backgroundColor='transparent' color="#385899" />
-          </View>
+          
+            <View style={{flex: 3}}>
+              <Text style={{fontSize: 25, fontWeight: 'bold', color: '#333'}}>
+                Discount Offers
+              </Text>
+            </View>
+
+            <View style={{flexDirection: 'row', flex: 1}} >
+              <Icon.Button size={25} name="facebook-square" backgroundColor='transparent' color="#385899" />
+              <Icon.Button size={25} name="instagram" backgroundColor='transparent' color="#d74f8d" />
+            </View>
 
         </View>
+
         <FlatList
 
                 data={data}
                 renderItem={({item, index}) => (
                     <ListItem 
                       clickable={true}
+                      imageSource={{uri: 'https://facebook.github.io/react/logo-og.png'}}
                       title={item}
-                      onItemSaved={this.saveListItem}
+                      icon={'heart-o'}
+                      iconPressed={'heart'}
+                      showIcon={true}
+                      iconColor={'red'}
+                      onIconPressed={this.saveListItem}
                       onPress={() => this.handleItemPress(item) }
                     />
                     
